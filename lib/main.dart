@@ -1,4 +1,5 @@
 import 'package:bodmas_comp/screens/game_screen.dart';
+import 'package:bodmas_comp/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: GameScreen(),
+      home: const HomeScreen(),
     );
   }
 }
