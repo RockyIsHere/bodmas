@@ -12,6 +12,9 @@ class GameController extends GetxController {
   var b1 = '-'.obs;
   var b2 = '-'.obs;
 
+  var generateNum = ''.obs;
+  var getEqution = ''.obs;
+
   List shuffle(List items) {
     var random = Random();
     for (var i = items.length - 1; i > 0; i--) {
@@ -24,70 +27,71 @@ class GameController extends GetxController {
   }
 
   generateEquation({required String givenNum}) {
+    demoList.clear();
     for (var i in shuffle(numbers)) {
       for (var x in shuffle(operators)) {
         for (var j in shuffle(numbers)) {
           for (var y in shuffle(operators)) {
             for (var k in shuffle(numbers)) {
-              var generateNum = '';
               if (x == '/' && y == '/') {
-                generateNum = '${i / j / k}';
+                generateNum.value = '${i / j / k}';
               }
               if (x == '/' && y == '*') {
-                generateNum = '${i / j * k}';
+                generateNum.value = '${i / j * k}';
               }
               if (x == '/' && y == '+') {
-                generateNum = '${i / j + k}';
+                generateNum.value = '${i / j + k}';
               }
               if (x == '/' && y == '-') {
-                generateNum = '${i / j - k}';
+                generateNum.value = '${i / j - k}';
               }
 
               if (x == '*' && y == '/') {
-                generateNum = '${i * j / k}';
+                generateNum.value = '${i * j / k}';
               }
               if (x == '*' && y == '*') {
-                generateNum = '${i * j * k}';
+                generateNum.value = '${i * j * k}';
               }
               if (x == '*' && y == '+') {
-                generateNum = '${i * j + k}';
+                generateNum.value = '${i * j + k}';
               }
               if (x == '*' && y == '-') {
-                generateNum = '${i * j - k}';
+                generateNum.value = '${i * j - k}';
               }
 
               if (x == '+' && y == '/') {
-                generateNum = '${i + j / k}';
+                generateNum.value = '${i + j / k}';
               }
               if (x == '+' && y == '*') {
-                generateNum = '${i + j * k}';
+                generateNum.value = '${i + j * k}';
               }
               if (x == '+' && y == '+') {
-                generateNum = '${i + j + k}';
+                generateNum.value = '${i + j + k}';
               }
               if (x == '+' && y == '-') {
-                generateNum = '${i + j - k}';
+                generateNum.value = '${i + j - k}';
               }
 
               if (x == '-' && y == '/') {
-                generateNum = '${i - j / k}';
+                generateNum.value = '${i - j / k}';
               }
               if (x == '-' && y == '*') {
-                generateNum = '${i - j * k}';
+                generateNum.value = '${i - j * k}';
               }
               if (x == '-' && y == '+') {
-                generateNum = '${i - j + k}';
+                generateNum.value = '${i - j + k}';
               }
               if (x == '-' && y == '-') {
-                generateNum = '${i - j - k}';
+                generateNum.value = '${i - j - k}';
               }
 
-              if ((generateNum == givenNum) && demoList.isEmpty) {
+              if ((generateNum.value == givenNum) && demoList.isEmpty) {
                 n1 = i;
                 n2 = j;
                 n3 = k;
                 b1.value = x;
                 b2.value = y;
+                getEqution.value = '$n1 $b1 $n2 $b2 $n3';
                 print('$n1 $b1 $n2 $b2 $n3');
                 demoList.add('$n1 $b1 $n2 $b2 $n3');
               }

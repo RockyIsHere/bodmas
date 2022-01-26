@@ -10,20 +10,34 @@ class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextField(
-            controller: _controller,
-          ),
-          ElevatedButton(
-              onPressed: () {
-                gameController.generateEquation(givenNum: _controller.text);
-              },
-              child: const Text('Save')),
-          Text(
-              '${gameController.n1} ${gameController.b1} ${gameController.n2} ${gameController.b2} ${gameController.n3}')
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 28.0),
+              child: TextField(
+                controller: _controller,
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  gameController.generateEquation(givenNum: _controller.text);
+                },
+                child: const Text('Save')),
+            const SizedBox(
+              height: 30,
+            ),
+            Obx(
+              () => Text(
+                gameController.getEqution.value,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
