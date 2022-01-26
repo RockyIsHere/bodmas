@@ -12,6 +12,10 @@ class GameController extends GetxController {
   var b1 = '-'.obs;
   var b2 = '-'.obs;
 
+  final randomNum = 1000000.obs;
+  final isTrue = false.obs;
+  final showNumber = ''.obs;
+
   var generateNum = ''.obs;
   var getEqution = ''.obs;
 
@@ -85,6 +89,9 @@ class GameController extends GetxController {
                 generateNum.value = '${i - j - k}';
               }
 
+              if (generateNum.value == givenNum) {
+                isTrue.value = true;
+              }
               if ((generateNum.value == givenNum) && demoList.isEmpty) {
                 n1 = i;
                 n2 = j;
@@ -100,5 +107,29 @@ class GameController extends GetxController {
         }
       }
     }
+  }
+
+  void againGenerating() {
+    isTrue.value = false;
+    randomNum.value = 100000;
+    for (var element in numbers) {
+      generateEquation(givenNum: randomNum.toString());
+      if (isTrue.value) {
+        showNumber.value = randomNum.toString();
+        break;
+      } else {
+        randomNum.value = Random().nextInt(100);
+        generateEquation(givenNum: randomNum.toString());
+        continue;
+      }
+    }
+  }
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    againGenerating();
+
+    super.onInit();
   }
 }
